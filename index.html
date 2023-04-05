@@ -1,57 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Five Years, Today</title>
     <style>
-        body {
-            font-family: Georgia, 'Times New Roman', serif;
-            font-size: 22px;
-            color: #4b313b;
-            line-height: 1.8;
-            margin: 0;
-            padding: 0;
-            background-image: radial-gradient(circle at bottom right, #6e2ada, #b5d0e7); ; 
-        }
         
+      body {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 22px;
+        color: #4b313b;
+        line-height: 1.8;
+        margin: 0;
+        padding: 0;
+        background-image: radial-gradient(
+          circle at bottom right,
+          #6e2ada,
+          #b5d0e7
+        );
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-image: radial-gradient(
+          circle at top left,
+          #f2d2e9,
+          #43a6fc86
+        );
+      }
+
+      .container p {
+        margin-bottom: 48px;
+        text-align: center;
+      }
+
+      .down-arrow {
+        display: none;
+      }
+
+      @media (max-width: 767px) {
         .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-image: radial-gradient(circle at top left, #f2d2e9, #43a6fc86); 
+          overflow-x: hidden;
+          overflow-y: scroll;
+          height: 100vh;
+          scroll-snap-type: y mandatory;
+          background-image: radial-gradient(
+            circle at top left,
+            #f2d2e9,
+            #b5d0e7
+          );
         }
-        
-        .container p {
-            margin-bottom: 48px;
+
+        .container > p {
+          height: 100vh;
+          scroll-snap-align: start;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
-        
-        @media (max-width: 767px) {
-            .container {
-                overflow-x: hidden;
-                overflow-y: scroll;
-                height: 100vh;
-                scroll-snap-type: y mandatory;
-                background-image: radial-gradient(circle at top left, #f2d2e9, #b5d0e7);
-            }
-            
-            .container > p {
-                height: 100vh;
-                scroll-snap-align: start;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-        }        
+
+        @keyframes fadeAnimation {
+          0% {
+            opacity: 0.2;
+            transform: translate(-50%, 0);
+          }
+          50% {
+            opacity: 0.8;
+            transform: translate(-50%, 15px);
+          }
+          100% {
+            opacity: 0.2;
+            transform: translate(-50%, 0);
+          }
+        }
+        @-o-keyframes fadeAnimation {
+          0% {
+            opacity: 0.2;
+            transform: translate(-50%, 0);
+          }
+          50% {
+            opacity: 0.8;
+            transform: translate(-50%, 15px);
+          }
+          100% {
+            opacity: 0.2;
+            transform: translate(-50%, 0);
+          }
+        }
+        @-moz-keyframes fadeAnimation {
+          0% {
+            opacity: 0.2;
+            transform: translate(-50%, 0);
+          }
+          50% {
+            opacity: 0.8;
+            transform: translate(-50%, 15px);
+          }
+          100% {
+            opacity: 0.2;
+            transform: translate(-50%, 0);
+          }
+        }
+        @-webkit-keyframes fadeAnimation {
+          0% {
+            opacity: 0.2;
+            transform: translate(-50%, 0);
+          }
+          50% {
+            opacity: 0.8;
+            transform: translate(-50%, 15px);
+          }
+          100% {
+            opacity: 0.2;
+            transform: translate(-50%, 0);
+          }
+        }
+
+        /* Add down arrow */
+        .down-arrow {
+            display: block;
+          position: absolute;
+          bottom: 10px;
+          left: 50%;
+          font-size: 4em;
+          color: #fff;
+          opacity: 0.75;
+          transition: opacity 0.3s;
+          z-index: 1;
+          -webkit-animation: fadeAnimation 2s infinite;
+          -moz-animation: fadeAnimation 2s infinite;
+          -o-animation: fadeAnimation 2s infinite;
+          animation: fadeAnimation 2s infinite;
+        }
+
+        .down-arrow.inverted {
+          transform: scaleY(-1) translateX(-50%);
+          -webkit-animation: none;
+          -moz-animation: none;
+          -o-animation: none;
+          animation: none;
+        }
+      }
     </style>
-</head>
-<body>
+    <script></script>
+  </head>
+  <body>
     <div class="container">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod vel velit ac gravida. Etiam tincidunt malesuada lorem, vel sodales sapien viverra nec. Nullam id elit id nisi venenatis rutrum. Nam semper bibendum sapien non porttitor. Maecenas dignissim est euismod dolor dignissim, vel sagittis mauris tempor. Integer mollis purus in libero blandit bibendum.</p>
-        <p>Suspendisse varius risus massa, quis euismod turpis convallis a. Fusce nec ante quis enim maximus dignissim. Duis euismod orci vel lectus ornare, eu lacinia sapien porttitor. Fusce eget leo tortor. Sed in velit in velit tincidunt euismod a vel mi. Nulla vel lorem eu turpis dictum tristique. Praesent mattis gravida tortor vel finibus. Morbi eu felis magna. Nam ac malesuada libero.</p>
-        <p>Aliquam scelerisque ultrices augue. In hac habitasse platea dictumst. Duis pellentesque, sem sit amet molestie viverra, ex purus pulvinar enim, vel lobortis purus tortor eu massa. Fusce finibus rhoncus massa quis ultricies. Nulla vel ex blandit, lobortis magna non, euismod lectus. Aenean et bibendum velit. Vivamus laoreet felis at nisl fermentum dapibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-        <p>Suspendisse varius risus massa, quis euismod turpis convallis a. Fusce nec ante quis enim maximus dignissim. Duis euismod orci vel lectus ornare, eu lacinia sapien porttitor. Fusce eget leo tortor. Sed in velit in velit tincidunt euismod a vel mi. Nulla vel lorem eu turpis dictum tristique. Praesent mattis gravida tortor vel finibus. Morbi eu felis magna. Nam ac malesuada libero.Aliquam scelerisque ultrices augue. In hac habitasse platea dictumst. Duis pellentesque, sem sit amet molestie viverra, ex purus pulvinar enim, vel lobortis purus tortor eu massa. Fusce finibus rhoncus massa quis ultricies. Nulla vel ex blandit, lobortis magna non, euismod lectus. Aenean et bibendum velit. Vivamus laoreet felis at nisl fermentum dapibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod vel velit ac gravida. Etiam tincidunt malesuada lorem, vel sodales sapien viverra nec. Nullam id elit id nisi venenatis rutrum. Nam semper bibendum sapien non porttitor. Maecenas dignissim est euismod dolor dignissim, vel sagittis mauris tempor. Integer mollis purus in libero blandit bibendum.</p>
+      <p>The card that was sent with the flowers only allowed 175 characters for the message. And frnakly, that simply isn't nearly enough characters for everything that I have to say.</p>
+      <p>Because although this isn't a wedding anniversary, it is an important one. </p>
+      <p>It's been almost a year since the day we were wed, but today is not the anniversary of that day. </p>
+      <p>Today is the anniversary of when we took a leap. Today marks the day when we decided that we wanted to make a commitment. </p>
+      <p>We've been through so much since that day. It's been chaotic and joyous, beautiful and wild. It's been everything I could have hoped for and so much more. </p>
+      <p>It's been five years, today. </p>
+      <div class="down-arrow">&#9660;</div>
     </div>
-</body>
+    <script type="text/javascript">
+      window.addEventListener("DOMContentLoaded", () => {
+        const downArrow = document.querySelector(".down-arrow");
+        const container = document.querySelector(".container");
+        const paragraphs = container.children;
+        let nextParagraph = paragraphs[1];
+
+        downArrow.addEventListener("click", () => {
+          function getNextParagraph(currentPara) {
+              if (isLastParagraph(currentPara)) {
+                nextParagraph = container.firstElementChild;
+              } else {
+                nextParagraph = currentPara.nextElementSibling;
+              }
+            return nextParagraph;
+          }
+
+          function setCurrentParagraph() {
+            for (let i = 0; i < paragraphs.length; i++) {
+              if (paragraphs[i].getBoundingClientRect().bottom >= 0) {
+                return paragraphs[i];
+              }
+            }
+          }
+
+          function isLastParagraph(currentPara) {
+            var next = currentPara.nextElementSibling;
+            if (!next || next.tagName !== "P") {
+            console.log("last para");
+              return true;
+            }
+            return false;
+          }
+          var current = setCurrentParagraph();
+
+          var nextParagraph = getNextParagraph(current);
+
+          if (nextParagraph) {
+            nextParagraph.scrollIntoView({ behavior: "smooth" });
+          }
+          if (isLastParagraph(nextParagraph)) {
+            downArrow.classList.add("inverted");
+          } else {
+            downArrow.classList.remove("inverted");
+          }
+        });
+      });
+    </script>
+  </body>
 </html>
