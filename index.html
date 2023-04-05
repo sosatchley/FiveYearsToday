@@ -168,15 +168,12 @@
       <div class="down-arrow">&#9660;</div>
     </div>
     <script type="text/javascript">
-      window.addEventListener("DOMContentLoaded", () => {
+        var self = this;
         const downArrow = document.querySelector(".down-arrow");
         const container = document.querySelector(".container");
         const paragraphs = container.children;
-        let nextParagraph = paragraphs[1];
-
-        downArrow.addEventListener("click", () => {
-          function getNextParagraph(currentPara) {
-              if (isLastParagraph(currentPara)) {
+        function getNextParagraph(currentPara) {
+              if (self.isLastParagraph(currentPara)) {
                 nextParagraph = container.firstElementChild;
               } else {
                 nextParagraph = currentPara.nextElementSibling;
@@ -195,26 +192,31 @@
           function isLastParagraph(currentPara) {
             var next = currentPara.nextElementSibling;
             if (!next || next.tagName !== "P") {
-            console.log("last para");
               return true;
             }
             return false;
           }
-          var current = setCurrentParagraph();
+        let nextParagraph = paragraphs[1];
 
-          var nextParagraph = getNextParagraph(current);
+        downArrow.addEventListener("click", () => {
+          
+          var current = self.setCurrentParagraph();
+
+          var nextParagraph = self.getNextParagraph(current);
 
           if (nextParagraph) {
             nextParagraph.scrollIntoView({ behavior: "smooth" });
           }
-          if (isLastParagraph(nextParagraph)) {
-            downArrow.classList.add("inverted");
-          } else {
-            downArrow.classList.remove("inverted");
-          }
         });
-        
-      });
+
+        container.addEventListener("scroll", () => {
+            if (self.isLastParagraph(self.setCurrentParagraph())) {
+                downArrow.classList.add("inverted");
+            } 
+            else {
+                downArrow.classList.remove("inverted");
+            }
+        });
     </script>
   </body>
 </html>
